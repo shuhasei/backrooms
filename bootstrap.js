@@ -13,6 +13,7 @@ Object.assign(globalThis, {
 
 // Important: prelude must load before game-core because game-core creates
 // procedural textures immediately while it is being evaluated.
+// world-fix and room-stability patch streamed room generation.
 // network-v2 replaces the older PeerJS helpers.
 // authoritative-ai must load after network-v2 so host authority and enemy sync
 // wrap the final networking functions.
@@ -22,6 +23,7 @@ const parts = [
   './prelude.js',
   './game-core.js',
   './world-fix.js',
+  './room-stability.js',
   './game-logic.js',
   './game-runtime.js',
   './network-v2.js',
@@ -33,7 +35,7 @@ const parts = [
 for (const src of parts) {
   await new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = `${src}?v=20260830f`;
+    script.src = `${src}?v=20260830g`;
     script.async = false;
     script.onload = resolve;
     script.onerror = () => reject(new Error(`Failed to load ${src}`));
