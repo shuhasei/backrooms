@@ -29,7 +29,12 @@
       <div class="meter"><i id="micMeter"></i></div>
       <span id="micState">OFF</span>
     </div>
-    <div id="netState">SOLO</div>
+    <div class="meterRow">
+      <span>THREAT</span>
+      <div class="meter"><i id="threatMeter"></i></div>
+      <span id="threatState">CALM</span>
+    </div>
+    <div id="netState">SOLO · LIGHT OFF</div>
   </div>
 
   <div id="interaction" aria-hidden="true"></div>
@@ -89,11 +94,11 @@
     </details>
 
     <p class="keys">
-      WASD 移動 / Shift 走る / マウス 視点 / E 調べる / M 環境音 / K マイク / V フィルター / Esc メニュー
+      WASD 移動 / Shift 走る / マウス 視点 / E 調べる / F 懐中電灯 / M 環境音 / K マイク / V フィルター / Esc メニュー
     </p>
   </section>
 
   <noscript>このコンテンツには JavaScript が必要です。</noscript>
-  <script type="module" src="./game.js"></script>
+  <script type="module" src="./bootstrap.js"></script>
 </body>
 </html>
