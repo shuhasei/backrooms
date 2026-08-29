@@ -16,6 +16,7 @@ Object.assign(globalThis, {
 const parts = [
   './prelude.js',
   './game-core.js',
+  './world-fix.js',
   './game-logic.js',
   './game-runtime.js',
   './game-assets.js',
@@ -24,7 +25,7 @@ const parts = [
 for (const src of parts) {
   await new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = `${src}?v=20260830b`;
+    script.src = `${src}?v=20260830c`;
     script.async = false;
     script.onload = resolve;
     script.onerror = () => reject(new Error(`Failed to load ${src}`));
