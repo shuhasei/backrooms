@@ -38,12 +38,13 @@ const parts = [
   './multiplayer-advanced.js',
   './survival-fixes.js',
   './precision-systems.js',
+  './gameplay-v2.js',
 ];
 
 for (const src of parts) {
   await new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = `${src}?v=20260830k`;
+    script.src = `${src}?v=20260830m`;
     script.async = false;
     script.onload = resolve;
     script.onerror = () => reject(new Error(`Failed to load ${src}`));
