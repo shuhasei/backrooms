@@ -19,17 +19,15 @@ Object.assign(globalThis, {
   disposeEnemy,
 });
 
-// Base definitions must exist before patch layers wrap them. Runtime setup is
-// deliberately deferred until the very end so no later base file overwrites a
-// multiplayer/AI/camera wrapper after event handlers have been installed.
+// Base definitions first. We intentionally keep the original room generator from
+// game-core.js; geometry-changing world-fix/room-stability patches are not loaded.
 const parts = [
   './prelude.js',
   './game-core.js',
   './game-logic.js',
   './game-runtime.js',
   './game-assets.js',
-  './world-fix.js',
-  './room-stability.js',
+  './camera-stability-lite.js',
   './network-v2.js',
   './authoritative-ai.js',
   './player-avatar.js',
@@ -47,7 +45,7 @@ const parts = [
 for (const src of parts) {
   await new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = `${src}?v=20260830q`;
+    script.src = `${src}?v=20260830r`;
     script.async = false;
     script.onload = resolve;
     script.onerror = () => reject(new Error(`Failed to load ${src}`));
