@@ -3,6 +3,7 @@ import { PointerLockControls } from 'three/addons/controls/PointerLockControls.j
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { DecalGeometry } from 'three/addons/geometries/DecalGeometry.js';
 import { createEnemy, enemyStats, animateEnemy, disposeEnemy } from './enemy-models.js';
 
 Object.assign(globalThis, {
@@ -11,22 +12,14 @@ Object.assign(globalThis, {
   EffectComposer,
   RenderPass,
   ShaderPass,
+  DecalGeometry,
   createEnemy,
   enemyStats,
   animateEnemy,
   disposeEnemy,
 });
 
-// Important: prelude must load before game-core because game-core creates
-// procedural textures immediately while it is being evaluated.
-// world-fix and room-stability patch streamed room generation.
-// network-v2 replaces the older PeerJS helpers.
-// authoritative-ai must load after network-v2 so host authority and enemy sync
-// wrap the final networking functions.
-// player-avatar replaces the minimal remote-player primitive with an animated
-// orange hazmat teammate.
-// immersive-horror adds spatial audio, proximity voice, gaze AI, VHS post FX and
-// dead reckoning before setupRuntime installs the final handlers in game-assets.
+// Boot order matters because later files intentionally wrap earlier systems.
 const parts = [
   './prelude.js',
   './game-core.js',
@@ -38,13 +31,15 @@ const parts = [
   './authoritative-ai.js',
   './player-avatar.js',
   './immersive-horror.js',
+  './survival-gameplay.js',
+  './multiplayer-advanced.js',
   './game-assets.js',
 ];
 
 for (const src of parts) {
   await new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = `${src}?v=20260830h`;
+    script.src = `${src}?v=20260830i`;
     script.async = false;
     script.onload = resolve;
     script.onerror = () => reject(new Error(`Failed to load ${src}`));
