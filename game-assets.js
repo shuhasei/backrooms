@@ -60,4 +60,6 @@ function setupRuntime(){
   renderer.domElement.addEventListener('pointerup',e=>{if(e.pointerId===touchId)touchId=null;});
   setFilter('bodycam');applyQuality(true);switchLevel(0,true);animate();
 }
-setupRuntime();
+// setupRuntime() is intentionally called by bootstrap.js only after every
+// extension layer has wrapped the base functions. This prevents later base
+// declarations from silently replacing multiplayer/AI/camera patches.
