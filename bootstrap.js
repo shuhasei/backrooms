@@ -33,13 +33,14 @@ const parts = [
   './immersive-horror.js',
   './survival-gameplay.js',
   './multiplayer-advanced.js',
+  './survival-fixes.js',
   './game-assets.js',
 ];
 
 for (const src of parts) {
   await new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = `${src}?v=20260830i`;
+    script.src = `${src}?v=20260830j`;
     script.async = false;
     script.onload = resolve;
     script.onerror = () => reject(new Error(`Failed to load ${src}`));
