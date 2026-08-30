@@ -41,12 +41,13 @@ const parts = [
   './gameplay-v2.js',
   './lens-realism.js',
   './reference-polish.js',
+  './starter-lighting.js',
 ];
 
 for (const src of parts) {
   await new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = `${src}?v=20260830p`;
+    script.src = `${src}?v=20260830q`;
     script.async = false;
     script.onload = resolve;
     script.onerror = () => reject(new Error(`Failed to load ${src}`));
