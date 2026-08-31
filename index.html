@@ -16,7 +16,7 @@
   }
   </script>
 </head>
-<body data-filter="bodycam">
+<body data-filter="clean">
   <div id="app"></div>
 
   <div id="hud" aria-live="polite">
@@ -69,9 +69,9 @@
       <label>
         映像フィルター
         <select id="filter">
-          <option value="clean">Clean</option>
+          <option value="clean" selected>Clean（明るめ）</option>
           <option value="vhs">VHS</option>
-          <option value="bodycam" selected>Bodycam</option>
+          <option value="bodycam">Bodycam</option>
           <option value="night">Night</option>
         </select>
       </label>
@@ -100,6 +100,6 @@
   </section>
 
   <noscript>このコンテンツには JavaScript が必要です。</noscript>
-  <script type="module" src="./bootstrap.js?v=20260901a"></script>
+  <script type="module" src="./bootstrap.js?v=20260901b"></script>
 </body>
 </html>
