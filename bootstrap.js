@@ -46,12 +46,13 @@ const parts = [
   './look-sensitivity.js',
   './realistic-lighting.js',
   './full-spec-integration.js',
+  './core-game-loop.js',
 ];
 
 for (const src of parts) {
   await new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = `${src}?v=20260831b`;
+    script.src = `${src}?v=20260901a`;
     script.async = false;
     script.onload = resolve;
     script.onerror = () => reject(new Error(`Failed to load ${src}`));
